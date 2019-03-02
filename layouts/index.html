@@ -1,64 +1,51 @@
 {{ define "main" }}
+
+  <div role="icons" class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="header-icons list-inline text-center header-links">
+          {{ range .Site.Data.beautifulhugo.social.social_icons }}
+            {{- if isset $.Site.Author .id }}
+              <li>
+                <a class="icon" href="{{ printf .url (index $.Site.Author .id) }}" title="{{ .title }}">
+                  <span>
+                    <i class="{{ .icon }} fa-5x"></i>
+                  </span>
+                </a>
+              </li>
+            {{- end -}}
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <div role="main" class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         {{ with .Content }}
-          <div class="well">
+          <div class="row">
             {{.}}
           </div>
         {{ end }}
 
-        <div class="posts-list">
-          {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
-          {{ range $pag.Pages }}
-            <article class="post-preview">
-              <a href="{{ .Permalink }}">
-                <h2 class="post-title">{{ .Title }}</h2>
-                {{ if .Params.subtitle }}
-                  <h3 class="post-subtitle">
-                  {{ .Params.subtitle }}
-                  </h3>
-                {{ end }}
-                {{ if .Params.image }}
-                <img src="{{ .Params.image }}" alt="{{ .Title }}" class="img-title" />
-                {{ end }}
-              </a>
-
-              {{ partial "post_meta.html" . }}
-              <div class="post-entry">
-                {{ if .Truncated }}
-                  {{ if .Params.summary }}{{ .Params.summary }}{{ else }}{{ .Summary }}{{ end }}
-                  <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
-                {{ else }}
-                  {{ .Content }}
-                {{ end }}
-              </div>
-
-              {{ if .Params.tags }}
-                <div class="blog-tags">
-                  {{ range .Params.tags }}
-                    <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-                  {{ end }}
-                </div>
-              {{ end }}
-            </article>
-          {{ end }}
+        <div role="status" class="row">
+          <div align="center">
+              <h2>Status Updates From Colton J. McCurdy</h2>
+                <a class="twitter-timeline"
+                  data-width="800"
+                  data-height="800"
+                  data-dnt="true"
+                  data-theme="dark"
+                  data-link-color="#FFCC66"
+                  data-chrome="transparent noborders noscrollbar noheader"
+                  data-related="twitterapi,twitter"
+                  data-aria-polite="assertive"
+                  href="https://twitter.com/McCurdyColton?ref_src=twsrc%5Etfw">
+                </a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
         </div>
-
-        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-          <ul class="pager main-pager">
-            {{ if .Paginator.HasPrev }}
-              <li class="previous">
-                <a href="{{ .URL }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
-              </li>
-            {{ end }}
-            {{ if .Paginator.HasNext }}
-              <li class="next">
-                <a href="{{ .URL }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
-              </li>
-            {{ end }}
-          </ul>
-        {{ end }}
       </div>
     </div>
   </div>

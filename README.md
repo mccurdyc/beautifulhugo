@@ -1,13 +1,21 @@
-# Beautiful Hugo - A port of Beautiful Jekyll Theme
+# A Customized Beautiful Hugo - A customized port of Beautiful Hugo, a port of the Beautiful Jekyll Theme
 
 ![Custom Beautiful Hugo Theme Screenshot](images/screenshot.png)
 
 ## Installation
 
-    $ mkdir themes
-    $ cd themes
-    $ git submodule add https://github.com/halogenica/beautifulhugo.git beautifulhugo
-
+1. [Start a Hugo project](https://gohugo.io/getting-started/quick-start/)
+```bash
+hugo new site your-site-name
+```
+2. Initialized the Git Repository
+```bash
+git init
+```
+3. "Install" the theme
+```bash
+git submodule add https://github.com/mccurdyc/beautifulhugo.git themes/beautifulhugo
+```
 
 See [the Hugo documentation](https://gohugo.io/themes/installing/) for more information.
 
@@ -30,10 +38,12 @@ pygmentsCodeFences = true
 pygmentsUseClasses = true
 ```
 
-Then, you can generate a different style by running:
+Then, you can manually edit the syntax highlighting at the bottom of `static/css/main.css`.
+
+Or, you can generate a different style by running:
 
 ```
-hugo gen chromastyles --style=trac > static/css/syntax.css
+hugo gen chromastyles --style=trac >> static/css/main.css
 ```
 
 #### Pygments - Old server side syntax highlighting

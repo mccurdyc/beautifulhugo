@@ -20,7 +20,7 @@ git submodule add https://github.com/mccurdyc/beautifulhugo.git themes/beautiful
 4. [Update your config.* to use the theme](https://gohugo.io/themes/installing-and-using-themes/) (if using `toml` add the following)
 ```toml
 themesDir = "themes"
-theme = beautifulhugo
+theme = "beautifulhugo"
 ```
 
 See [the Hugo documentation](https://gohugo.io/themes/installing/) for more information.

@@ -27,6 +27,35 @@ See [the Hugo documentation](https://gohugo.io/themes/installing/) for more info
 
 ## Extra Features
 
+### You can easily change the colorscheme
+
+At the top of `static/css/main.css`, set the appropriate values for your colorscheme.
+
+```css
+:root {
+  --base00: #2d2d2d;
+  --base01: #393939;
+  --base02: #515151;
+  --base03: #747369;
+  --base04: #a09f93;
+  --base05: #d3d0c8;
+  --base06: #e8e6df;
+  --base07: #f2f0ec;
+  --base08: #f2777a;
+  --base09: #f99157;
+  --base0a: #ffcc66;
+  --base0b: #99cc99;
+  --base0c: #66cccc;
+  --base0d: #6699cc;
+  --base0e: #cc99cc;
+  --base0f: #d27b53;
+}
+```
+
+_Issue: there is one known issue where the Twitter status links are hardcoded to use `#FFCC66`._
+
+I recommend https://terminal.sexy if your colorscheme is available on there.
+
 ### Responsive
 
 This theme is designed to look great on both large-screen and small-screen (mobile) devices.
